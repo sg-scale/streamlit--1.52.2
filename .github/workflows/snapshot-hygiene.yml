@@ -59,7 +59,7 @@ jobs:
           python scripts/snapshot_cleanup.py --ci
       - name: Delete comment on success
         if: success() && github.event_name == 'pull_request'
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             // Find and delete existing orphaned snapshots comments
@@ -90,7 +90,7 @@ jobs:
             }
       - name: Comment on PR if snapshots found
         if: failure() && github.event_name == 'pull_request'
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const body = `❌ **Orphaned Snapshots Detected**
